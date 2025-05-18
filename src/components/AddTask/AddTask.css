@@ -1,0 +1,90 @@
+/* src/app/components/add-task/add-task.component.css */
+.add-form {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.87);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.add-form input[type="text"],
+.add-form input[type="date"],
+.add-form input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+  .form-row {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+  }
+  
+  .form-control {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+   align-items: flex-start;
+  }
+  .priority-control {
+    align-items: center;
+  }
+  .priority-control label {
+    display: block;  
+    margin-bottom: 10px; 
+    text-align: center;
+  }
+  
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  
+  .priority-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    user-select: none;
+  }
+  
+  /* smooth click effect */
+  .priority-btn:active {
+    transform: scale(0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* hover effect */
+  .priority-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  
+  .priority-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .priority-btn:active {
+    transform: scale(0.95);
+  }
