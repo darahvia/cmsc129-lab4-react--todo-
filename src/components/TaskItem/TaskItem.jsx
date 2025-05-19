@@ -17,10 +17,14 @@ export default function TaskItem({ task, onDelete, onEdit }) {
     return formatted;
   };
 
+  const formatDate = (date) => {  
+    return new Date(task.added).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
   // Function to get the color based on priority
   const getPriorityColor = (priority) => {
-    const colors = ['#4CAF50', '#FF9800', '#F44336']; // Green, Orange, Red
-    return colors[priority - 1] || '#4CAF50'; // Default to Green (low priority)
+    const colors = ['#4CAF50', '#FF9800', '#F44336'];
+    return colors[priority - 1] || '#4CAF50'; 
   };
 
   return (
@@ -33,7 +37,7 @@ export default function TaskItem({ task, onDelete, onEdit }) {
         {task.name} <button onClick={(e) => { e.stopPropagation(); onDelete(task); }}>×</button>
       </h3>
       <div className="details">
-        {task.day} {task.time && `• ${formatTime(task.time)}`}
+        Due: {formatDate(task.day)} {task.time && `• ${formatTime(task.time)}`}
       </div>
     </div>
   );

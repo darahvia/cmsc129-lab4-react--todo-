@@ -7,42 +7,44 @@ import { collection, getDocs, addDoc, deleteDoc, updateDoc, doc } from 'firebase
 import db from './firebase'
 
 export default function Tasks() {
+ // black rectangular frame to simulate a mobile phoen
   const PhoneFrame = ({ children }) => {
-  return (
-    <div style={{
-      width: 375,          // iPhone X width in px
-      height: 812,         // iPhone X height in px
-      padding: 40,
-      border: '16px solid black',
-      borderRadius: 40,
-      boxShadow: '0 0 30px rgba(0,0,0,0.5)',
-      overflow: 'hidden',
-      margin: '20px auto',
-      display: 'flex',
-      flexDirection: 'column',
-      position: 'relative'
-    }}>
-      {children}
-    </div>
-  )
-}
+    return (
+      <div style={{
+        width: 375,         
+        height: 812,         
+        padding: 40,
+        border: '16px solid black',
+        borderRadius: 40,
+        boxShadow: '0 0 30px rgba(0,0,0,0.5)',
+        overflow: 'hidden',
+        margin: '20px auto',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative'
+      }}>
+        {children}
+      </div>
+    )
+  }
+
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [showAddTask, setShowAddTask] = useState(false);
   const [sortOption, setSortOption] = useState('added');
   const tasksCollection = collection(db, 'tasks');
 
-
+  // add task to firestore
   const addTask = async (task) => {
     const docRef = await addDoc(tasksCollection, {
       ...task,
-      added: new Date().toISOString()
+      added: new Date().toISOString() // date added 
     })
-    setTasks(prev => [...prev, { id: docRef.id, ...task }])
-    setShowAddTask(false)
+    setTasks(prev => [...prev, { id: docRef.id, ...task }]) // FIFO (oldest at top)
+    setShowAddTask(false) // when a task is added, close the add task component
   }
 
-
+  // delete task from firestore
   const deleteTask = async (taskToDelete) => {
     await deleteDoc(doc(db, 'tasks', taskToDelete.id))
     setTasks(tasks.filter(t => t.id !== taskToDelete.id))
@@ -136,9 +138,8 @@ useEffect(() => {
             ))}
           </div>
         </div>
-
       </div>
-              <Footer showAddTask={showAddTask} toggleAddTask={toggleAddTask} />
+      <Footer showAddTask={showAddTask} toggleAddTask={toggleAddTask} />
 
     </PhoneFrame>
   );

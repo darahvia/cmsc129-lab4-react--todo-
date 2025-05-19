@@ -67,3 +67,27 @@
   flex: 1;
   min-height: 0;
 }
+
+select {
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  border: 1px solid #646cff;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1em;
+  margin-top: 1em;
+  margin-left: 0.5em;
+  margin-bottom: 1em;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+select:focus {
+  border-color: #535bf2;
+  box-shadow: 0 0 4px #646cff;
+}
+
+option {
+  background: #242424;
+  color: #fff;
+}

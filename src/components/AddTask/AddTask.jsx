@@ -51,20 +51,20 @@ export default function AddTask({ onAddTask, onEditTask, taskToEdit }) {
         <input type="text" value={name} onChange={e => setName(e.target.value)} required placeholder="Add Task" />
       </div>
       <div class="form-row">
-      <div class="form-control">
-        <label>Day</label>
-        <input type="date" value={day} onChange={e => setDay(e.target.value)} />
-      </div>
-      <div class="form-control">
-        <label>Time</label>
-        <input type="time" value={time} onChange={e => setTime(e.target.value)} required />
-      </div>
+        <div class="form-control">
+          <label>Day</label>
+          <input type="date" value={day} onChange={e => setDay(e.target.value)} />
+        </div>
+        <div class="form-control">
+          <label>Time</label>
+          <input type="time" value={time} onChange={e => setTime(e.target.value)} required />
+        </div>
       </div>
       <div class="form-control priority-control">
         <label for="priority" style={{ color: getPriorityColor(priority) }}>{getPriorityLabel(priority)}</label>
         <button class="priority-btn" type="button" style={{ color: getPriorityColor(priority) }} onClick={togglePriority}>{getPriorityMark(priority)}</button>
       </div>
-      <button type="submit">{taskToEdit ? 'Update Task' : 'Add Task'}</button>
+      <button class="add-task-button" type="submit">{taskToEdit ? 'Update Task' : 'Add Task'}</button>
     </form>
   )
 }
